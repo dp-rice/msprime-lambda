@@ -1839,10 +1839,11 @@ class PopulationConfiguration(object):
         per generation. Growth rates can be negative. This is zero for a
         constant population size. Defaults to 0.
     """
-    def __init__(self, sample_size=None, initial_size=None, growth_rate=0.0):
+    def __init__(self, sample_size=None, initial_size=None, growth_rate=0.0, multiple_merger_para=2.0):
         self.sample_size = sample_size
         self.initial_size = initial_size
         self.growth_rate = growth_rate
+        self.multiple_merger_para = multiple_merger_para
 
     def get_ll_representation(self, Ne):
         """
@@ -1852,7 +1853,8 @@ class PopulationConfiguration(object):
         return {
             "initial_size": initial_size / Ne,
             "growth_rate": self.growth_rate * 4 * Ne,
-            "multiple_merger_para": 2.0
+            # "multiple_merger_para": 2.0
+            "multiple_merger_para": self.multiple_merger_para
         }
 
 
